@@ -15,7 +15,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late TextEditingController textController = TextEditingController();
+  late TextEditingController emailController = TextEditingController();
+  late TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +30,13 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             const SizedBox(height: 200),
             RoundedTextField(
-              textController: textController,
+              textController: emailController,
               hintText: 'Email',
               prefix: const Icon(Icons.email),
             ),
             const SizedBox(height: 10),
             RoundedTextField(
-              textController: textController,
+              textController: passController,
               hintText: 'Password',
               obscureText: true,
               prefix: const Icon(Icons.lock),

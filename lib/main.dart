@@ -1,4 +1,3 @@
-import 'package:astronacci/module/home/presentation/page/home.dart';
 import 'package:astronacci/utils/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: GetMaterialApp(
         //theme: ThemeConfig.mainTheme(context),
-        initialRoute: RouteConfig.login,
+        initialRoute: RouteConfig.register,
         // initialBinding: InitialBinding(),
         unknownRoute: RouteConfig.unknownPage,
         getPages: RouteConfig().listPages,
