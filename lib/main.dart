@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: GetMaterialApp(
         //theme: ThemeConfig.mainTheme(context),
-        initialRoute: RouteConfig.register,
+        initialRoute: RouteConfig.home,
         // initialBinding: InitialBinding(),
         unknownRoute: RouteConfig.unknownPage,
         getPages: RouteConfig().listPages,
