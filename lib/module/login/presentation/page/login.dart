@@ -1,7 +1,9 @@
+import 'package:astronacci/utils/config/route_config.dart';
 import 'package:astronacci/widgets/main_button.dart';
 import 'package:astronacci/widgets/rounded_text_field.dart';
 import 'package:astronacci/widgets/text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../controller/login_controller.dart';
 
@@ -28,7 +30,16 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 200),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Login',
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ))
+              ],
+            ),
+            const SizedBox(height: 40),
             RoundedTextField(
               textController: emailController,
               hintText: 'Email',
@@ -48,7 +59,9 @@ class _LoginPageState extends State<LoginPage> {
                 TextButtons(
                     label: 'Forgot Password',
                     textColor: Colors.blue,
-                    onClick: () {}),
+                    onClick: () {
+                      Get.toNamed(RouteConfig.forgotpassword);
+                    }),
               ],
             ),
             const SizedBox(height: 20),
@@ -63,7 +76,11 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 TextButtons(label: 'Don\'t have account? ', onClick: () {}),
                 TextButtons(
-                    label: 'Register', textColor: Colors.blue, onClick: () {}),
+                    label: 'Register',
+                    textColor: Colors.blue,
+                    onClick: () {
+                      Get.toNamed(RouteConfig.register);
+                    }),
               ],
             ),
           ],

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         //theme: ThemeConfig.mainTheme(context),
-        initialRoute: RouteConfig.user,
+        initialRoute: RouteConfig.login,
         // initialBinding: InitialBinding(),
         unknownRoute: RouteConfig.unknownPage,
         getPages: RouteConfig().listPages,
