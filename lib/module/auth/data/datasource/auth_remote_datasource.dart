@@ -3,14 +3,14 @@ import 'package:astronacci/utils/api_client/dio/exception.dart';
 import 'package:astronacci/utils/api_client/dio/raw_api_response.dart';
 import 'package:astronacci/utils/config/api_endpoint.dart';
 
-abstract class LoginDatasourceInterface{
+abstract class AuthRemoteDatasourceInterface{
 
   void login(String username, String password);
 }
 
-class LoginDatasourceImpl extends LoginDatasourceInterface {
+class AuthRemoteDatasourceImpl extends AuthRemoteDatasourceInterface {
 
-  LoginDatasourceImpl({
+  AuthRemoteDatasourceImpl({
     required this.apiClient,
     required this.apiEndpoint,
   });

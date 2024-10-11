@@ -1,9 +1,8 @@
-import 'package:astronacci/module/forgot_password/presentation/controller/forgot_password_controller.dart';
+import 'package:astronacci/module/auth/presentation/controller/forgot_password_controller.dart';
+import 'package:astronacci/widgets/main_button.dart';
+import 'package:astronacci/widgets/rounded_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../widgets/main_button.dart';
-import '../../../../widgets/rounded_text_field.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   ForgotPasswordPage({required this.controller, Key? key}) : super(key: key);

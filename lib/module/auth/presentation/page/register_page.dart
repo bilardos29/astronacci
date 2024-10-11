@@ -1,10 +1,8 @@
-import 'package:astronacci/module/register/presentation/controller/register_controller.dart';
+import 'package:astronacci/module/auth/presentation/controller/register_controller.dart';
+import 'package:astronacci/widgets/main_button.dart';
+import 'package:astronacci/widgets/rounded_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../widgets/main_button.dart';
-import '../../../../widgets/rounded_text_field.dart';
-import '../../../../widgets/text_button.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({required this.controller, Key? key}) : super(key: key);

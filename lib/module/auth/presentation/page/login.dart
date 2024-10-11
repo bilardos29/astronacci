@@ -69,7 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                 label: 'Login',
                 bgColor: Colors.blue,
                 textColor: Colors.white,
-                onClick: () {}),
+                onClick: () {
+                  Get.toNamed(RouteConfig.home);
+                }),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

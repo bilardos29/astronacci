@@ -18,7 +18,8 @@ dependencies:
   image_cropper: ^5.0.1
   image_picker: ^1.0.1
   permission_handler: ^11.1.0
-#  intl: 0.18.1
+  sqflite: ^2.3.3
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:
