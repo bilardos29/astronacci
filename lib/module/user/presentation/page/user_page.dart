@@ -25,6 +25,7 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(title: Text('Profile')),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(

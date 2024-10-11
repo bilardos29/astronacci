@@ -1,4 +1,6 @@
 import 'package:astronacci/module/home/presentation/controller/home_controller.dart';
+import 'package:astronacci/module/home/presentation/widget/list_user_view.dart';
+import 'package:astronacci/widgets/rounded_text_field.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,39 +13,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  late TextEditingController search = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Home'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: RoundedTextField(
+              textController: search,
+              hintText: 'Search',
+              obscureText: true,
+              prefix: const Icon(Icons.search),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          const SizedBox(height: 12),
+          ListView.builder(
+            itemBuilder: (ctx, item) => const ListUserView(
+              img: '',
+              fullname: 'Bilardo Situmorang',
+              email: 'bilardo.situmorang@gmail.com',
+              phone: '082130427985',
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+            itemCount: 3,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+          ),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

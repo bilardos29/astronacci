@@ -103,7 +103,7 @@ class _RoundedTextFieldState extends State<RoundedTextField> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(widget.radius),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderSide: BorderSide(color: Colors.grey[400]!),
                   ),
                   prefixIcon: widget.prefix,
                   suffixIcon: widget.suffix,

@@ -11,19 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
-        useMaterial3: true,
-      ),
-      home: GetMaterialApp(
+    return GetMaterialApp(
         //theme: ThemeConfig.mainTheme(context),
-        initialRoute: RouteConfig.home,
+        initialRoute: RouteConfig.user,
         // initialBinding: InitialBinding(),
         unknownRoute: RouteConfig.unknownPage,
         getPages: RouteConfig().listPages,
-      ),
     );
   }
 }

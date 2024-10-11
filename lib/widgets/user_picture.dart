@@ -28,7 +28,7 @@ class UserPicture extends StatelessWidget {
           Container(
             height: imgSize,
             width: imgSize,
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(pictureSize == PictureSize.big ? 8 : 2),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(imgSize),
               border: Border.all(width: 1, color: Colors.black26),
