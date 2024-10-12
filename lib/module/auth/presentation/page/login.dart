@@ -1,6 +1,7 @@
 import 'package:astronacci/utils/config/route_config.dart';
 import 'package:astronacci/widgets/main_button.dart';
 import 'package:astronacci/widgets/rounded_text_field.dart';
+import 'package:astronacci/widgets/snack_bar.dart';
 import 'package:astronacci/widgets/text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,8 +18,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late TextEditingController emailController = TextEditingController();
-  late TextEditingController passController = TextEditingController();
+  late TextEditingController email = TextEditingController();
+  late TextEditingController pass = TextEditingController();
+
+  bool hidePass = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.controller.init();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +51,25 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 40),
             RoundedTextField(
-              textController: emailController,
+              textController: email,
               hintText: 'Email',
               prefix: const Icon(Icons.email),
             ),
             const SizedBox(height: 10),
             RoundedTextField(
-              textController: passController,
+              textController: pass,
               hintText: 'Password',
-              obscureText: true,
+              obscureText: hidePass,
               prefix: const Icon(Icons.lock),
+              suffix: InkWell(
+                  onTap: () {
+                    setState(() {
+                      hidePass = !hidePass;
+                    });
+                  },
+                  child: Icon(hidePass
+                      ? Icons.remove_red_eye
+                      : Icons.remove_red_eye_outlined)),
             ),
             const SizedBox(height: 6),
             Row(
@@ -69,8 +88,13 @@ class _LoginPageState extends State<LoginPage> {
                 label: 'Login',
                 bgColor: Colors.blue,
                 textColor: Colors.white,
-                onClick: () {
-                  Get.toNamed(RouteConfig.home);
+                onClick: () async {
+                  String msg =
+                      await widget.controller.validate(email.text, pass.text);
+                  print(msg);
+                  msg.isEmpty
+                      ? Get.offAllNamed(RouteConfig.home)
+                      : SnackBarWidget.show(context, msg);
                 }),
             const SizedBox(height: 16),
             Row(

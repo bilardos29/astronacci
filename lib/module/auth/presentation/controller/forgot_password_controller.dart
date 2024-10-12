@@ -1,4 +1,5 @@
 import 'package:astronacci/module/auth/domain/usecase/forgot_password.dart';
+import 'package:astronacci/utils/validation.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {
@@ -10,6 +11,8 @@ class ForgotPasswordController extends GetxController {
   final ForgotPassword forgotPassword;
 
   String validateEmail(String email) {
+    if (email.isEmpty) return 'Email cann\'t empty!';
+    if (!ValidationUtil.checkEmail(email)) return 'Email format is wrong';
     return '';
   }
 
@@ -18,7 +21,7 @@ class ForgotPasswordController extends GetxController {
     if(errEmail.isNotEmpty) return errEmail;
 
     bool errValidate = await forgotPassword.execute(email);
-    return errValidate ? '' : 'Error';
+    return errValidate ? '' : 'Error Forgot Password';
   }
 
 }

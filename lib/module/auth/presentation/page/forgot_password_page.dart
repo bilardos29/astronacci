@@ -53,7 +53,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 80),
             RoundedTextField(
               textController: emailController,
               hintText: 'Email',
@@ -65,6 +65,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 bgColor: Colors.blue,
                 textColor: Colors.white,
                 onClick: () {}),
+            const SizedBox(height: 120),
           ],
         ),
       ),

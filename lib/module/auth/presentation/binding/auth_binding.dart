@@ -35,7 +35,7 @@ class AuthBinding extends Bindings {
     Get.put<InitializeDB>(InitializeDB(authInterface: Get.find()));
 
 
-    Get.put(LoginController(login: Get.find()));
+    Get.put(LoginController(login: Get.find(), initializeDB: Get.find()));
 
     Get.put(RegisterController(register: Get.find()));
 

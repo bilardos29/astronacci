@@ -16,8 +16,7 @@ class DBLocalUtil {
       'email TEXT, '
       'fullname TEXT, '
       'phone TEXT, '
-      'email TEXT, '
-      'phone TEXT, '
+      'password TEXT, '
       'profilePicture TEXT)',
     );
   }
