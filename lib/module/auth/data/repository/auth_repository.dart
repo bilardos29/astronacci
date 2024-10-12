@@ -34,4 +34,10 @@ class AuthRepository implements AuthInterface {
     return await dtSourceImpl.register(user);
   }
 
+  @override
+  Future<bool> insertUser(UserModel user) async {
+    // TODO: implement insertUser
+    return await dtSourceImpl.insertUser(user);
+  }
+
 }

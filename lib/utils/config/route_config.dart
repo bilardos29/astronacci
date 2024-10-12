@@ -3,21 +3,21 @@ import 'package:astronacci/module/auth/presentation/page/forgot_password_page.da
 import 'package:astronacci/module/auth/presentation/page/login.dart';
 import 'package:astronacci/module/auth/presentation/page/register_page.dart';
 import 'package:astronacci/module/home/presentation/binding/home_binding.dart';
-import 'package:astronacci/module/user/presentation/binding/user_binding.dart';
-import 'package:astronacci/module/user/presentation/page/user_page.dart';
+import 'package:astronacci/module/profile/presentation/binding/profile_binding.dart';
+import 'package:astronacci/module/profile/presentation/page/profile_page.dart';
 import 'package:astronacci/module/home/presentation/page/home.dart';
 import 'package:astronacci/module/unknown/presentation/page/unknown_page.dart';
 
 import 'package:get/get.dart';
 
 class RouteConfig {
-
   static const login = '/login';
   static const home = '/home';
   static const forgotpassword = '/forgotpassword';
   static const register = '/register';
   static const unknownRoute = '/unknownroute';
-  static const user = '/user';
+  static const profile = '/profile';
+  static const detailuser = '/detailuser';
 
   final listPages = [
     GetPage(
@@ -49,14 +49,21 @@ class RouteConfig {
       binding: AuthBinding(),
     ),
     GetPage(
-      name: user,
-      page: () => UserPage(
+      name: profile,
+      page: () => ProfilePage(
         controller: Get.find(),
       ),
-      binding: UserBinding(),
+      binding: ProfileBinding(),
     ),
+    // GetPage(
+    //   name: detailuser,
+    //   page: () => ProfilePage(
+    //     controller: Get.find(),
+    //   ),
+    //   binding: ProfileBinding(),
+    // ),
   ];
 
   static final unknownPage =
-  GetPage(name: unknownRoute, page: () => const UnknownPage());
+      GetPage(name: unknownRoute, page: () => const UnknownPage());
 }

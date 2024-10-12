@@ -19,12 +19,6 @@ class AuthBinding extends Bindings {
       AuthRepository(dtSourceImpl: Get.find()),
     );
 
-    Get.put<AuthInterface>(
-      AuthRepository(
-        dtSourceImpl: Get.find(),
-      ),
-    );
-
     //UseCase
     Get.put<Login>(Login(authInterface: Get.find()));
 

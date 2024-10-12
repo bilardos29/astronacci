@@ -11,4 +11,6 @@ abstract class AuthInterface {
   Future<bool> forgotPassword(String email);
 
   void initializeDB();
+
+  Future<bool> insertUser(UserModel user);
 }

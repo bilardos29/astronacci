@@ -82,7 +82,7 @@ class DBLocalUtil {
 
   Future<List<Map<String, Object?>>> getDataWithPagination(
     String table,
-    String where,
+    String? where,
     int limit,
     int offset,
     String? orderBy,

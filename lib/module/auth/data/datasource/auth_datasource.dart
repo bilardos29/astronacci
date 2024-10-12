@@ -10,6 +10,8 @@ abstract class AuthDatasourceInterface {
   Future<bool> register(UserModel user);
 
   Future<bool> forgotPassword(String email);
+
+  Future<bool> insertUser(UserModel user);
 }
 
 class AuthDatasourceImpl extends AuthDatasourceInterface {
@@ -21,17 +23,9 @@ class AuthDatasourceImpl extends AuthDatasourceInterface {
     String q = 'Select * from ${DBLocalUtil.user} '
         'where email = \'$email\' '
         'and password = \'$password\' ';
+    bool isEmpty = await isUserEmpty(localDB, q);
 
-    List<Map<String, Object?>> rawData = await localDB.getCustomQuery(q);
-    List<UserModel> listUser =
-        List.from(rawData).map((json) => UserModel.fromJson(json)).toList();
-    if (listUser.isNotEmpty) {
-      //success
-      return true;
-    } else {
-      //user not found
-      return false;
-    }
+    return !isEmpty;
   }
 
   @override
@@ -48,25 +42,55 @@ class AuthDatasourceImpl extends AuthDatasourceInterface {
 
     String q = 'Select * from ${DBLocalUtil.user} '
         'where email = \'$email\' ';
+    bool isEmpty = await isUserEmpty(localDB, q);
 
-    List<Map<String, Object?>> rawData = await localDB.getCustomQuery(q);
-    List<UserModel> listUser =
-        List.from(rawData).map((json) => UserModel.fromJson(json)).toList();
-    if (listUser.isNotEmpty) {
-      //change password to default
-      return true;
-    } else {
-      //user not found
-      return false;
-    }
+    return !isEmpty;
   }
 
   @override
   Future<bool> register(UserModel user) async {
     // TODO: implement register
     DBLocalUtil localDB = DBLocalUtil();
-    user.id = const Uuid().v4();
-    int value = await localDB.insertData(DBLocalUtil.user, user.toJson());
-    return value != 0;
+
+    String q = 'Select * from ${DBLocalUtil.user} '
+        'where email = \'${user.email}\' ';
+    bool isEmpty = await isUserEmpty(localDB, q);
+
+    if(isEmpty) {
+      user.id = const Uuid().v4();
+      int value = await localDB.insertData(DBLocalUtil.user, user.toJson());
+      return value != 0;
+    }
+
+    return false;
+  }
+
+  @override
+  Future<bool> insertUser(UserModel user) async {
+    // TODO: implement insertUser
+    DBLocalUtil localDB = DBLocalUtil();
+
+    String q = 'Select * from ${DBLocalUtil.user} '
+        'where email = \'${user.email}\' ';
+    bool isEmpty = await isUserEmpty(localDB, q);
+
+    if(isEmpty) {
+      user.id = const Uuid().v4();
+      int value = await localDB.insertData(DBLocalUtil.user, user.toJson());
+      return value != 0;
+    }
+
+    return false;
+  }
+
+  Future<bool> isUserEmpty(DBLocalUtil localDB, String query) async {
+    List<Map<String, Object?>> rawData = await localDB.getCustomQuery(query);
+    List<UserModel> listUser =
+        List.from(rawData).map((json) => UserModel.fromJson(json)).toList();
+    if (listUser.isEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

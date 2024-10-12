@@ -1,3 +1,4 @@
+import 'package:astronacci/module/home/presentation/controller/home_controller.dart';
 import 'package:astronacci/utils/config/route_config.dart';
 import 'package:astronacci/widgets/main_button.dart';
 import 'package:astronacci/widgets/rounded_text_field.dart';
@@ -9,7 +10,10 @@ import 'package:get/get.dart';
 import '../controller/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key, required this.controller}) : super(key: key);
+  LoginPage({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
 
   LoginController controller;
 
@@ -91,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                 onClick: () async {
                   String msg =
                       await widget.controller.validate(email.text, pass.text);
-                  print(msg);
+
                   msg.isEmpty
                       ? Get.offAllNamed(RouteConfig.home)
                       : SnackBarWidget.show(context, msg);
